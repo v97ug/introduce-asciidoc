@@ -1,0 +1,126 @@
+:source-highlighter: coderay
+:toc:
+:toclevels: 2
+
+= なんと、Asciidocはソースコードをインポートできるよ！
+
+markdownよりもカスタマイズしほうだいのAsciidocを紹介するよ！
+
+== 対象の方
+markdownに限界を感じているあなたへ。
+
+かと言ってWordではないツールをお探しのあなたへ。
+
+**Asciidoc**があります！！
+
+== Asciidocってなあに？
+Asciidocは、Webページ、本、記事などを書くための軽量マークアップ言語です。拡張子は``.asciidoc``もしくは``.adoc``
+
+でも、このままだとmarkdownと同じような感じがしますね。でもでも、Asciidocには、markdownにはない便利な機能がたくさんあります。
+
+その便利な機能を紹介しますね。
+
+== ソースコードをインポートできる！
+
+なんと、Asciidocはソースコードをインポートできます！ざっとこんな感じで。
+
+```
+[source,java]
+----
+\include::Something.java[]
+----
+```
+
+``include::```のあとに、ソースコードのパスを記述できます。
+
+そして、最後の``[]```ですが、ここに以下のように記述すると、、、
+
+```
+[source,java]
+----
+\include::Something.java[lines=5..10]
+----
+```
+
+５行目から１０行目だけを指定して表示することができます!!
+
+== もちろん、ソースコードのハイライトもしてくれます！
+
+以下をインストールしてから、
+
+```bash
+sudo gem install coderay
+```
+
+Asciidocファイルの冒頭に、
+
+```
+:source-highlighter: coderay
+```
+
+を追加しましょう。きれいにハイライトされるはずです。
+
+== 自動で目次を作ってくれる！
+
+asciidocファイルの冒頭に以下の記述をすると、自動で目次を作ってくれます。
+
+```
+:toc:
+:toclevels: 2
+```
+
+== 日本語のリファレンスもある！
+
+公式のリファレンスを日本語に訳してくれた素晴らしい方がいらっしゃいました。
+
+https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/
+
+== PDFへの変換方法
+以下のサイトがとても参考になります。
+https://aimless.jp/blog/archives/2641/[asciidocをPDFに変換してみた（asciidoctor-pdf）]
+
+ここでは簡単に、何もテーマを指定せずにPDFに変換したいと思います。
+
+まず、以下のものをインストールします。
+
+```
+sudo gem install --pre asciidoctor-pdf
+```
+
+あとは、以下のコマンドを打つだけです。
+
+```
+asciidoctor-pdf ファイル名.adoc
+```
+
+== 環境はAtomもしくはIntelliJがおすすめ
+
+Atomでは、 https://atom.io/packages/asciidoc-preview[AsciiDoc Preview] というプラグインを入れるとAtomでAsciidocを編集することができます。
+
+IntelliJでは、 https://plugins.jetbrains.com/plugin/7391-asciidoc[Asciidoc] というプラグインがあるので、それを使いましょう。
+
+== 実用例
+以下にAsciidocでかかれた技術書などが一覧になっています。
+http://asciidoc.org/#X6
+
+これを見てみると、オライリー本の http://shop.oreilly.com/product/9780596155964.do[Programming Scala] は、Asciidocでかかれていたんですね！
+
+== 気になったこと
+- PDFに出力したとき、日本語の一文が長いと、折り返しがおかしくなることがあった。細かく改行を入れることで解決した。
+- 画像の名前は英語名でないと、PDFに出力できなかった。
+
+== 参考
+
+http://qiita.com/xmeta/items/de667a8b8a0f982e123a[AsciiDoc入門]
+
+http://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual]
+
+https://takumon.github.io/asciidoc-syntax-quick-reference-japanese-translation/[Asciidoc文法クイックリファレンスの日本語訳]
+
+http://qiita.com/gho4d76g/items/302e1ff91754b9b50f34[asciidoctor-pdfで社内ドキュメントを書こう]
+
+== あとがき
+
+テキストベースで管理できて、markdownよりも機能が豊富なAsciidoc。
+
+テーマとかいろいろ変えてみると、面白そうです。
